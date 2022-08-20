@@ -1,3 +1,4 @@
+import React from 'react'
 import type { NextPage } from 'next'
 import Image from 'next/image'
 import Navbar from '../components/navbar'
