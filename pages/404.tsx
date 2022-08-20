@@ -20,12 +20,12 @@ function NotFound() {
         <meta property="og:url" content="https://tidyurl.xyz" />
         <meta property="og:site_name" content="Tidy-URL" />
         <meta property="article:publisher" content="https://gautamghai.com" />
-        <meta property="og:image" content={`${typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''}/assets/tidyurl.png`} />
+        <meta property="og:image" content={`${typeof window !== "undefined" && window.location.hostname ? window.location.hostname : "https://tidyurl.com"}/assets/tidyurl.png`} />
         <meta property="og:image:type" content="image/png" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Tidy-URL : URL Shortener - Create Custom Short Links" />
         <meta name="twitter:description" content="Ad Free URL shortener to create perfect URLs. Tidy-URL helps you create, customize, and share neat and tidy links" />
-        <meta name="twitter:image" content={`${typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''}/assets/tidyurl.png`} />
+        <meta name="twitter:image" content={`${typeof window !== "undefined" && window.location.hostname ? window.location.hostname : "https://tidyurl.com"}/assets/tidyurl.png`} />
         <meta name="twitter:site" content="@_gautamghai" />
       </Head>
       <div className='bg-bgBrown-100 w-full min-h-screen'>
