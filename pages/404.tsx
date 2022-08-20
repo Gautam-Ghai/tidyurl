@@ -4,6 +4,7 @@ import Button from '../components/button';
 import { AiOutlineHome } from "react-icons/ai"
 import Navbar from '../components/navbar';
 import Head from 'next/head';
+import Link from 'next/link';
 
 function NotFound() {
   return (
@@ -36,11 +37,11 @@ function NotFound() {
               <h1 className='text-btnBrown pb-2'>We can't seem to find the page you're looking for.</h1>
               <h1 className='text-btnBrown'>The link you followed may be broken or you may have entered the wrong link.</h1>
             </div>
-            <a href="/" className='my-8'>
+            <Link href="/" className='my-8'>
               <Button leftIcon={<AiOutlineHome />}>
                 Go to Homepage
               </Button>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

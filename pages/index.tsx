@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Navbar from '../components/navbar'
 import Form from '../components/form'
 import Head from 'next/head'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   return (
@@ -41,7 +42,7 @@ const Home: NextPage = () => {
         <img src="/assets/sm-up.svg" alt='bg-image' className='block md:hidden absolute top-0 w-auto z-0' />
         <img src="/assets/sm-down.svg" alt='bg-image' className='block md:hidden absolute bottom-0 w-auto z-0' />
         <img src="/assets/wave.svg" alt='bg-image' className='hidden md:block absolute bottom-0 w-auto z-0' />
-        <p className='absolute bottom-0 sm:bottom-1 md:bottom-4 left-0 right-0 mx-auto w-fit font-medium text-white'>Developed by <a href="https://gautamghai.com" target="_blank" className='hover:text-customBtn-100'>Gautam Ghai</a></p>
+        <p className='absolute bottom-0 sm:bottom-1 md:bottom-4 left-0 right-0 mx-auto w-fit font-medium text-white'>Developed by <Link href="https://gautamghai.com" target="_blank" className='hover:text-customBtn-100'>Gautam Ghai</Link></p>
       </div>
     </>
   )
