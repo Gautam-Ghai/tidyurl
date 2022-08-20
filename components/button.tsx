@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, ReactNode } from 'react'
 
 interface Props {
-  children: string
+  children: ReactNode
   leftIcon?: ReactElement,
   rightIcon?: ReactElement,
   onClick?: () => void,

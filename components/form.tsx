@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FiLink, FiSettings } from 'react-icons/fi'
 import { GiRollingDices } from 'react-icons/gi'
 import Button from '../components/button'
 import Modal from './modal'
 import copy from 'copy-to-clipboard';
 import { AiOutlineCopy } from 'react-icons/ai'
+import { ClipLoader } from 'react-spinners'
 
 function Form() {
 
@@ -13,6 +14,13 @@ function Form() {
     const [linkError, setLinkError] = useState(null || '')
     const [slugError, setSlugError] = useState(null || '')
     const [ open, setOpen ] = useState(false)
+    const [ loading, setLoading ] = useState(false)
+
+    useEffect(() => {
+        if(open){
+            setLoading(false)
+        }
+    }, [open])
 
     const handleRandomize = () => {
         const random = Math.random().toString(36).substring(2,8)
@@ -36,10 +44,12 @@ function Form() {
         } else if(result.message === 'Link already exists!'){
             setSlug(result.link)
             setOpen(true)
+            setLoading(false)
             setLinkError(result.message)
         }
         else {
             setLinkError(result.message)
+            setLoading(false)
             return false
         }
     }
@@ -51,16 +61,19 @@ function Form() {
             return true
         } else {
             setSlugError(result.message)
+            setLoading(false)
             return false
         }
     }
 
     const handleSubmit = async () => {
+        setLoading(true)
         if (url.length > 0) {
             const urlRegex = /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/
 
             if(!urlRegex.test(url)) {
                 setLinkError('Please provide a valid link')
+                setLoading(false)
                 return;
             }
 
@@ -103,10 +116,12 @@ function Form() {
                     if(response){
                         setOpen(true)
                     }
+                    setLoading(false)
                 }
             }
         } else {
             setLinkError('Please provide a link');
+            setLoading(false)
             return;
         }
 
@@ -153,8 +168,8 @@ function Form() {
             <Modal open={open} setOpen={setOpen} title='Your Shortened Tidy-URL:'>
                 <div className='flex'>
                 <input type="text" disabled placeholder={`www.tidyurl.xyz/${slug}`} className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-2/3' />
-                    <Button className='rounded-l-none w-1/3' leftIcon={<AiOutlineCopy />} onClick={handleCopy}>
-                        Copy
+                    <Button className='rounded-l-none w-1/3' leftIcon={loading ? undefined : <AiOutlineCopy />} onClick={handleCopy}>
+                        {loading ? <ClipLoader color="#f4f7fd"/> : "Copy" }
                     </Button>
                 </div>
             </Modal>

@@ -30,8 +30,6 @@ const setURL = async (req: NextApiRequest, res: NextApiResponse) => {
         console.log(err)
         res.status(500).json({ message: "Couldn't shorten the link!" })
     }
-
-    res.status(200).json(url)
 }
 
 export default setURL;
