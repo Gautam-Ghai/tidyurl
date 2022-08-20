@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkSlugFunc } from '../../../utils/checkSlugFunc';
 
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const checkSlug = async (req: NextApiRequest, res: NextApiResponse) => {
   const { slug } = req.query;
 
   if (!slug) {
@@ -13,5 +13,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const result = await checkSlugFunc(res, slug);
 
+ 
   if (result) res.send(JSON.stringify({ message: "success" }));
 }
+
+export default checkSlug

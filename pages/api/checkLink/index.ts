@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkUrlFunc } from '../../../utils/checkUrlFunc';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const checkLink = async (req: NextApiRequest, res: NextApiResponse) => {
   const { url } = req.body;
 
   if (!url) {
@@ -13,4 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const result = await checkUrlFunc(res, url);
 
   if (result) res.send(JSON.stringify({ message: "success" }));
+
 }
+
+export default checkLink;

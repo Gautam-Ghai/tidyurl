@@ -36,7 +36,7 @@ const Home: NextPage = () => {
         <div className='flex flex-wrap items-center justify-evenly sm:mt-16 md:mt-24'>
           <Form />
           <div className='hidden md:block'>
-            <Image src="/assets/main.svg" width={500} height={500} className="z-10" />
+            <Image src="/assets/main.svg" width={500} height={500} className="z-10" alt="user-image" />
           </div>
         </div>
         <img src="/assets/sm-up.svg" alt='bg-image' className='block md:hidden absolute top-0 w-auto z-0' />

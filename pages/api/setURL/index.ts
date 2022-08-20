@@ -5,7 +5,7 @@ import { checkUrlFunc } from '../../../utils/checkUrlFunc';
 
 import { prisma } from "../../db/prisma";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const setURL = async (req: NextApiRequest, res: NextApiResponse) => {
     const { url, slug } = req.body;
 
     try {
@@ -33,3 +33,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json(url)
 }
+
+export default setURL;

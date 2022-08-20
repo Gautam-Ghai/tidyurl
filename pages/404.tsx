@@ -34,7 +34,7 @@ function NotFound() {
           <div className='flex flex-col justify-center items-center'>
             <Image src="/assets/404.svg" height={500} width={500} alt="404 - Not Found" objectFit='contain' />
             <div className='text-center p-2 text-lg'>
-              <h1 className='text-btnBrown pb-2'>We can't seem to find the page you're looking for.</h1>
+              <h1 className='text-btnBrown pb-2'>We can&apos;t seem to find the page you&apos;re looking for.</h1>
               <h1 className='text-btnBrown'>The link you followed may be broken or you may have entered the wrong link.</h1>
             </div>
             <Link href="/" className='my-8'>
