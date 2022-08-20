@@ -5,8 +5,9 @@ import { AiOutlineHome } from "react-icons/ai"
 import Navbar from '../components/navbar';
 import Head from 'next/head';
 import Link from 'next/link';
+import { NextPage } from 'next';
 
-function NotFound() {
+const NotFound: NextPage = () => {
   return (
     <>
       <Head>

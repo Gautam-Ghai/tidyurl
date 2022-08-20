@@ -1,4 +1,4 @@
-import { prisma } from "../pages/db/prisma";
+import { prisma } from "../db/prisma";
 import { array2String } from "./array2String";
 import type { NextApiResponse } from 'next'
 

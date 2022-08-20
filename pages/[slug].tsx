@@ -1,12 +1,12 @@
 import React from 'react'
-import { prisma } from './db/prisma'
+import { prisma } from '../db/prisma'
 import { SyncLoader } from 'react-spinners'
 import Navbar from '../components/navbar'
 import Head from 'next/head'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import { array2String } from '../utils/array2String'
 
-function Slug() {
+const Slug: NextPage = () => {
     return (
         <>
             <Head>

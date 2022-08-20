@@ -3,7 +3,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { checkSlugFunc } from '../../../utils/checkSlugFunc';
 import { checkUrlFunc } from '../../../utils/checkUrlFunc';
 
-import { prisma } from "../../db/prisma";
+import { prisma } from "../../../db/prisma";
 
 const setURL = async (req: NextApiRequest, res: NextApiResponse) => {
     const { url, slug } = req.body;
