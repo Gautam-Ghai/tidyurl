@@ -3,6 +3,7 @@ import { prisma } from './db/prisma'
 import { SyncLoader } from 'react-spinners'
 import Navbar from '../components/navbar'
 import Head from 'next/head'
+import { GetServerSideProps } from 'next'
 
 function Slug() {
     return (
@@ -37,10 +38,10 @@ function Slug() {
     )
 }
 
-export const getServerSideProps = async ({ params }) => {
+export const getServerSideProps : GetServerSideProps = async (context) => {
 
     try {
-        const { slug } = params;
+        const { slug } = context.params;
 
         const data = await prisma.shortLink.findFirst({
             where: {
@@ -58,7 +59,7 @@ export const getServerSideProps = async ({ params }) => {
 
         return {
             redirect: {
-                destination: data?.url
+                destination: data?.url || undefined
             }
         }
     } catch (err) {
