@@ -161,15 +161,15 @@ function Form() {
                 </div>
                 <div className='mt-8 flex justify-end'>
                     <Button onClick={handleSubmit}>
-                        Tidy it
+                        {loading ? <ClipLoader size={20} color="#f4f7fd"/> : "Tidy it" }
                     </Button>
                 </div>
             </div>
             <Modal open={open} setOpen={setOpen} title='Your Shortened Tidy-URL:'>
                 <div className='flex'>
                 <input type="text" disabled placeholder={`www.tidyurl.xyz/${slug}`} className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-2/3' />
-                    <Button className='rounded-l-none w-1/3' leftIcon={loading ? undefined : <AiOutlineCopy />} onClick={handleCopy}>
-                        {loading ? <ClipLoader color="#f4f7fd"/> : "Copy" }
+                    <Button className='rounded-l-none w-1/3' leftIcon={<AiOutlineCopy />} onClick={handleCopy}>
+                        Copy
                     </Button>
                 </div>
             </Modal>
