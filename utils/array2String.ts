@@ -1,4 +1,6 @@
-export const array2String = (str: string | string[]) => {
+export const array2String = (str: string | string[] | undefined) => {
+
+    if(typeof str === "undefined") return ""
 
     let result = str;
 

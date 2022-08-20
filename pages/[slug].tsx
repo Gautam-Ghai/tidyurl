@@ -4,6 +4,7 @@ import { SyncLoader } from 'react-spinners'
 import Navbar from '../components/navbar'
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
+import { array2String } from '../utils/array2String'
 
 function Slug() {
     return (
@@ -41,12 +42,14 @@ function Slug() {
 export const getServerSideProps : GetServerSideProps = async (context) => {
 
     try {
-        const { slug } = context.params;
+        const slug  = context.query.slug;
+
+        const sortedSlug = array2String(slug);
 
         const data = await prisma.shortLink.findFirst({
             where: {
                 slug: {
-                    equals: slug
+                    equals: sortedSlug
                 }
             }
         })
@@ -59,7 +62,8 @@ export const getServerSideProps : GetServerSideProps = async (context) => {
 
         return {
             redirect: {
-                destination: data?.url || undefined
+                destination: data?.url || '/404',
+                permanent: true
             }
         }
     } catch (err) {
