@@ -69,14 +69,9 @@ function Form() {
     const handleSubmit = async () => {
         setLoading(true)
         if (url.length > 0) {
-            let finalURL = '';
-            if(!url.toLocaleLowerCase().startsWith('http'))[
-                finalURL = 'http://' + url
-            ]
-
             const urlRegex = /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/i
 
-            if(!urlRegex.test(finalURL)) {
+            if(!urlRegex.test(url)) {
                 setLinkError('Please provide a valid link')
                 setLoading(false)
                 return;
