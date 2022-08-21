@@ -28,23 +28,23 @@ function Form() {
         return random;
     }
 
-    const checkLink = async () => {
+    const checkLink = async (finalURL: string) => {
         const response = await fetch(`/api/checkLink`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                url: url
+                url: finalURL
             })
         })
         const result = await response.json();
-        if (result.message === 'success') {
+        if (result && result.message === 'success') {
             return true
-        } else if(result.message === 'Link already exists!'){
+        } else if(result && result.message === 'Link already exists!'){
             setSlug(result.link)
-            setOpen(true)
             setLoading(false)
+            setOpen(true)
             setLinkError(result.message)
         }
         else {
@@ -57,7 +57,7 @@ function Form() {
     const checkSlug = async (toCheckSlug: string) => {
         const response = await fetch(`/api/checkSlug/${toCheckSlug}`)
         const result = await response.json();
-        if (result.message === 'success') {
+        if (result && result.message === 'success') {
             return true
         } else {
             setSlugError(result.message)
@@ -69,15 +69,20 @@ function Form() {
     const handleSubmit = async () => {
         setLoading(true)
         if (url.length > 0) {
-            const urlRegex = /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/
+            let finalURL = '';
+            if(!url.toLocaleLowerCase().startsWith('http'))[
+                finalURL = 'http://' + url
+            ]
 
-            if(!urlRegex.test(url)) {
+            const urlRegex = /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/i
+
+            if(!urlRegex.test(finalURL)) {
                 setLinkError('Please provide a valid link')
                 setLoading(false)
                 return;
             }
 
-            const acceptUrl = await checkLink();
+            const acceptUrl = await checkLink(finalURL);
             if (acceptUrl) {
                 let toCheckSlug = '';
 
@@ -89,13 +94,15 @@ function Form() {
 
                 if(toCheckSlug.length <4) {
                     setSlugError("Slug can't be less than 4 letters!")
+                    setLoading(false)
                     return;
                 }
 
-                const regex = /^[A-Za-z0-9]*$/
+                const regex = /^[A-Za-z0-9]*$/i
 
                 if(!regex.test(toCheckSlug)) {
                     setSlugError('Only letters and numbers')
+                    setLoading(false)
                     return;
                 }
 
