@@ -14,12 +14,7 @@ const checkSlug = async (req: NextApiRequest, res: NextApiResponse) => {
   const result = await checkSlugFunc(res, slug);
 
  
-  if (result) {
-    res.send(JSON.stringify({ message: "success" }))
-  } else{
-    res.statusCode = 500;
-    res.send(JSON.stringify({ message: "Something went wrong!" }));
-  }
+  if (result) res.send(JSON.stringify({ message: "success" }))
 }
 
 export default checkSlug
