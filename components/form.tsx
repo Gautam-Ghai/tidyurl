@@ -39,9 +39,9 @@ function Form() {
             })
         })
         const result = await response.json();
-        if (result && result.message === 'success') {
+        if (response && result && result.message === 'success') {
             return true
-        } else if(result && result.message === 'Link already exists!'){
+        } else if(response && result && result.message === 'Link already exists!'){
             setSlug(result.link)
             setLoading(false)
             setOpen(true)
@@ -57,7 +57,7 @@ function Form() {
     const checkSlug = async (toCheckSlug: string) => {
         const response = await fetch(`/api/checkSlug/${toCheckSlug}`)
         const result = await response.json();
-        if (result && result.message === 'success') {
+        if (response && result && result.message === 'success') {
             return true
         } else {
             setSlugError(result.message)
@@ -69,6 +69,12 @@ function Form() {
     const handleSubmit = async () => {
         setLoading(true)
         if (url.length > 0) {
+            if(!url.toLowerCase().startsWith('http')){
+                setLinkError("Please include http|https")
+                setLoading(false)
+                return;
+            }
+
             const urlRegex = /^(ht|f)tp(s?)\:\/\/[0-9a-zA-Z]([-.\w]*[0-9a-zA-Z])*(:(0-9)*)*(\/?)([a-zA-Z0-9\-\.\?\,\'\/\\\+&amp;%\$#_]*)?$/i
 
             if(!urlRegex.test(url)) {
