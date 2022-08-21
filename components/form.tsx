@@ -28,14 +28,14 @@ function Form() {
         return random;
     }
 
-    const checkLink = async (finalURL: string) => {
+    const checkLink = async () => {
         const response = await fetch(`/api/checkLink`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                url: finalURL
+                url: url
             })
         })
         const result = await response.json();
@@ -82,7 +82,7 @@ function Form() {
                 return;
             }
 
-            const acceptUrl = await checkLink(finalURL);
+            const acceptUrl = await checkLink();
             if (acceptUrl) {
                 let toCheckSlug = '';
 
