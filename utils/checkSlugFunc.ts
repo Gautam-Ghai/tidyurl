@@ -17,7 +17,7 @@ export const checkSlugFunc = async (res: NextApiResponse, slug: string | string[
         return false;
     }
 
-    const regex = /^[A-Za-z0-9]*$/
+    const regex = /^[A-Za-z0-9]*$/i
 
     if(!regex.test(finalSlug)) {
         res.statusCode = 500;

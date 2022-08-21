@@ -12,8 +12,9 @@ const checkLink = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const result = await checkUrlFunc(res, url);
 
-  if (result) res.send(JSON.stringify({ message: "success" }))
-  else{
+  if (result) {
+    res.send(JSON.stringify({ message: "success" }))
+  } else{
     res.statusCode = 500;
     res.send(JSON.stringify({ message: "Something went wrong!" }));
   }
