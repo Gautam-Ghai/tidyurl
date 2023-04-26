@@ -39,9 +39,14 @@ function Form() {
             })
         })
         const result = await response.json();
-        if (response && result && result.message === 'success') {
+        if (response && result && result.safe && result.safe  === true) {
             return true
-        } else if(response && result && result.message === 'Link already exists!'){
+        } else if (response && result && result.safe &&  result.safe === false) {
+            setLinkError('The given link is unsafe!')
+            setLoading(false)
+            return false
+        }
+        else if(response && result && result.message === 'Link already exists!'){
             setSlug(result.link)
             setLoading(false)
             setOpen(true)
