@@ -141,7 +141,7 @@ function Form() {
     }
 
     const handleCopy = () => {
-        copy(`https://tidyurl.xyz/${slug}`);
+        copy(`https://tidyur.link/${slug}`);
     }
 
     return (
@@ -161,7 +161,7 @@ function Form() {
                 </div>
                 <div className=''>
                     <h1 className='flex items-center text-lg font-medium mb-2'><span><FiSettings className='mx-2' /></span>Customize your link <span className='absolute right-4 sm:right-8 md:right-16' onClick={handleRandomize}><GiRollingDices className='cursor-pointer text-3xl text-btnBrown' /></span></h1>
-                    <input type="text" disabled placeholder='www.tidyurl.xyz/' className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-40 sm:w-56' />
+                    <input type="text" disabled placeholder='www.tidyur.link/' className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-40 sm:w-56' />
                     <input
                         value={slug}
                         onChange={(e) => setSlug(e.target.value)}
@@ -180,7 +180,7 @@ function Form() {
             </div>
             <Modal open={open} setOpen={setOpen} title='Your Shortened Tidy-URL:'>
                 <div className='flex'>
-                <input type="text" disabled placeholder={`www.tidyurl.xyz/${slug}`} className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-2/3' />
+                <input type="text" disabled placeholder={`www.tidyur.link/${slug}`} className='placeholder-black font-medium bg-white rounded-l-xl p-4 border-2 border-gray-30000 w-2/3' />
                     <Button className='rounded-l-none w-1/3' leftIcon={<AiOutlineCopy />} onClick={handleCopy}>
                         Copy
                     </Button>

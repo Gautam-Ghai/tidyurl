@@ -17,7 +17,7 @@ const Slug: NextPage = () => {
                 <meta property="og:type" content="article" />
                 <meta property="og:title" content="Tidy-URL : URL Shortener - Create Custom Short Links" />
                 <meta property="og:description" content="Ad Free URL shortener to create perfect URLs. Tidy-URL helps you create, customize, and share neat and tidy links" />
-                <meta property="og:url" content="https://tidyurl.xyz" />
+                <meta property="og:url" content="https://tidyur.link" />
                 <meta property="og:site_name" content="Tidy-URL" />
                 <meta property="article:publisher" content="https://gautamghai.com" />
                 <meta property="og:image" content={`${typeof window !== 'undefined' && window.location.hostname ? window.location.hostname : ''}/assets/tidyurl.png`} />
