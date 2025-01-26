@@ -14,7 +14,7 @@
     "@vercel/analytics": "^1.0.0",
     "copy-to-clipboard": "^3.3.2",
     "googleapis": "^118.0.0",
-    "next": "12.2.5",
+    "next": "^15.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.4.0",
